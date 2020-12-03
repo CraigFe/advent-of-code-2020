@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -37,8 +38,9 @@ int compare_int(const void *a, const void *b)
 	return (*(int*)a - *(int*)b);
 }
 
-/* Find a pair of integers that sum to the required total in a sorted array. */
-void pairs_sum_to(int* values, int length, int total, int** left_ptr, int** right_ptr)
+/* Find a pair of integers that sum to the required total in a sorted array.
+ * Return `false` if there are no such integers. */
+bool pairs_sum_to(int* values, int length, int total, int* left_ptr, int* right_ptr)
 {
 	/* Keep a left pointer and a right pointer, advance them towards
 	 * each other according to their current total until the target is
@@ -55,44 +57,35 @@ void pairs_sum_to(int* values, int length, int total, int** left_ptr, int** righ
 		if (sum > total) large--;
 	}
 
-	if (small >= length || large < 0) return;
+	if (small >= length || large < 0) return false;
 
-	int *left = malloc(sizeof(int));
-	int *right = malloc(sizeof(int));
-
-        *left = values[small];
-	*right = values[large];
-
-	*left_ptr = left;
-	*right_ptr = right;
+	*left_ptr = values[small];
+	*right_ptr = values[large];
+	return true;
 }
 
 void part_one(FILE* fp, int* expenses, int nb_expenses)
 {
 	printf("--- Part One ---\n");
 
-	int* small = NULL;
-	int* large = NULL;
+	int small, large;
 	pairs_sum_to(expenses, nb_expenses, 2020, &small, &large);
 
-	printf("%d + %d = %d\n", *small, *large, *small + *large);
-	printf("%d * %d = %d\n\n", *small, *large, *small * *large);
+	printf("%d + %d = %d\n", small, large, small + large);
+	printf("%d * %d = %d\n\n", small, large, small * large);
 }
 
 void part_two(FILE* fp, int* expenses, int nb_expenses)
 {
 	printf("--- Part Two ---\n");
 
-	int* small = NULL;
-	int* large = NULL;
-
+	int small, large;
 	for (int i = 0; i < nb_expenses; i++) {
 		int current = expenses[i];
 
-		pairs_sum_to(expenses, nb_expenses, 2020 - current, &small, &large);
-		if (small != NULL) {
-			printf("%d + %d + %d = %d\n", *small, *large, current, *small + *large + current);
-			printf("%d * %d * %d = %d\n\n", *small, *large, current, *small * *large * current);
+		if (pairs_sum_to(expenses, nb_expenses, 2020 - current, &small, &large)) {
+			printf("%d + %d + %d = %d\n", small, large, current, small + large + current);
+			printf("%d * %d * %d = %d\n\n", small, large, current, small * large * current);
 			break;
 		}
 	}
