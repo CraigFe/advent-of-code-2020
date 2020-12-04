@@ -5,3 +5,4 @@ A new language for each (non-dependent) day.
 - [[file:01/main.c][Day 1 – C]]
 - [[file:02/main.pl][Day 2 – Prolog]]
 - [[file:03/main.escript][Day 3 – Erlang]]
+- [[file:04/main.js][Day 4 – JavaScript]]
