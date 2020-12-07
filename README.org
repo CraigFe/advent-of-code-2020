@@ -8,3 +8,4 @@ A new language for each (non-dependent) day.
 - [[file:04/main.js][Day 4 – JavaScript]]
 - [[file:05/main.awk][Day 5 – Awk]]
 - [[file:06/main.sql][Day 6 – PostgreSQL]]
+- [[file:07/main.rb][Day 7 – Ruby]]
