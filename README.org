@@ -11,3 +11,4 @@ A new language for each (non-dependent) day.
 - [[file:07/main.rb][Day 7 – Ruby]]
 - [[file:08/main.rs][Day 8 – Rust]]
 - [[file:09/main.dats][Day 9 – ATS]]
+- [[file:10/main.agda][Day 10 – Agda]]
