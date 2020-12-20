@@ -15,3 +15,4 @@ A new language for each (non-dependent) day.
 - [[file:11/Main.scala][Day 11 – Scala]]
 - [[file:12/main.m][Day 12 – Octave]]
 - [[file:13/main.clj][Day 13 – Clojure]]
+- [[file:14/main.py][Day 14 – Python]]
