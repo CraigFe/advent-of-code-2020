@@ -14,3 +14,4 @@ A new language for each (non-dependent) day.
 - [[file:10/main.agda][Day 10 – Agda]]
 - [[file:11/Main.scala][Day 11 – Scala]]
 - [[file:12/main.m][Day 12 – Octave]]
+- [[file:13/main.clj][Day 13 – Clojure]]
