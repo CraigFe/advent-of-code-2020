@@ -17,3 +17,4 @@ A new language for each (non-dependent) day.
 - [[file:13/main.clj][Day 13 – Clojure]]
 - [[file:14/main.py][Day 14 – Python]]
 - [[file:15/main.lua][Day 15 – Lua]]
+- [[file:16/main.kt][Day 16 – Kotlin]]
