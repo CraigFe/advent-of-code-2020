@@ -19,3 +19,4 @@ A new language for each (non-dependent) day.
 - [[file:15/main.lua][Day 15 – Lua]]
 - [[file:16/main.kt][Day 16 – Kotlin]]
 - [[file:17/main.jl][Day 17 – Julia]]
+- [[file:18/main.icn][Day 18 – Icon]]

@@ -1,0 +1,56 @@
+link printf
+link lists
+
+# Transform infix notation to equivalent in postfix
+procedure shuntingYard(infix, prec)
+    ops := []; output := []
+
+    infix ? until pos(0) do {
+        tab(many(' ')); token := tab(&pos + 1)
+
+        if token := numeric(token) then push(output, token)
+        else case token of {
+            "(" : push(ops, token)
+            ")" : while (op := pop(ops), not (op == "(")) do push(output, op)
+            default: {
+              while (not (ops[1] == "("), prec[ops[1]] >= prec[token], op := pop(ops)) do
+                  push(output, op)
+
+              push(ops, token)
+            }
+        }
+    }
+
+    while (op := pop(ops)) do push(output, op)
+    return (lreverse(output))
+end
+
+procedure compute(infix, precedences)
+    postfix := shuntingYard(infix, precedences)
+
+    stack := []
+    while (x := pop(postfix)) do {
+        if x := numeric(x) then push(stack, x)
+        else                    push(stack, x(pop(stack), pop(stack)))
+    }
+    return (pop(stack))
+end
+
+procedure sumAll(precedences)
+    f := open("input.txt", "r") | fail
+    sum := 0
+    while line := read(f) do sum +:= compute(line, precedences)
+    close(f)
+    return(sum)
+end
+
+procedure main()
+    pred := table()
+
+    pred["+"] := 1
+    pred["*"] := 1
+    printf("Part 1: %d\n", sumAll(pred))
+
+    pred["+"] := 2  # Give (+) a higher precedence than (*)
+    printf("part 2: %d\n", sumAll(pred))
+end
